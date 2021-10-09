@@ -10,11 +10,11 @@ import reactor.core.publisher.Mono;
 
 public class ReactiveJavaClientWebSocket {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         WebSocketClient client = new ReactorNettyWebSocketClient();
         client.execute(
-                        URI.create("ws://localhost:8080/messages"),
+                        URI.create("ws://localhost:8080/chat-message"),
                         session -> session.send(
                                         Mono.just(session.textMessage("event-spring-reactive-client-websocket")))
                                 .thenMany(session.receive()
